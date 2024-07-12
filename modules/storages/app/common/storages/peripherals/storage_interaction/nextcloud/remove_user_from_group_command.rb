@@ -51,7 +51,7 @@ module Storages::Peripherals::StorageInteraction::Nextcloud
                      Storages::Peripherals::StorageInteraction::RequestUrlBuilder.build(
                        @storage,
                        "ocs/v1.php/cloud/users",
-                       CGI.escapeURIComponent(user),
+                       user,
                        "groups"
                      ) + "?groupid=#{CGI.escapeURIComponent(group)}"
                    )

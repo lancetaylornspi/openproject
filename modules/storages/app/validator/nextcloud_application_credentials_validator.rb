@@ -41,7 +41,7 @@ class NextcloudApplicationCredentialsValidator
     response = OpenProject
                  .httpx
                  .basic_auth(contract.username, contract.password)
-                 .head(BUILDER.build(contract, "remote.php/dav"))
+                 .head(BUILDER.build(contract.model, "remote.php/dav"))
     case response
     in { status: 200..299 }
       true

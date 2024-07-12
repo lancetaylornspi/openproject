@@ -29,7 +29,7 @@
 #++
 #
 module Storages::Admin::Forms
-  class AutomaticallyManagedProjectFoldersFormComponent < ApplicationComponent # rubocop:disable OpenProject/AddPreviewForViewComponent
+  class AutomaticallyManagedProjectFoldersFormComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
 

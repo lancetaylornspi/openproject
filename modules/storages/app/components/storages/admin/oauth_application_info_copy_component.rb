@@ -29,7 +29,7 @@
 #++
 #
 module Storages::Admin
-  class OAuthApplicationInfoCopyComponent < ApplicationComponent # rubocop:disable OpenProject/AddPreviewForViewComponent
+  class OAuthApplicationInfoCopyComponent < ApplicationComponent
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 

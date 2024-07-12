@@ -29,7 +29,7 @@
 #++
 #
 module Storages::Admin::Forms
-  class OAuthClientFormComponent < ApplicationComponent # rubocop:disable OpenProject/AddPreviewForViewComponent
+  class OAuthClientFormComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
 
