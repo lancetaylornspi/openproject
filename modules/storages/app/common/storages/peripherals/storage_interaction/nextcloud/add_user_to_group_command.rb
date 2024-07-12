@@ -31,7 +31,7 @@
 module Storages::Peripherals::StorageInteraction::Nextcloud
   class AddUserToGroupCommand
     def initialize(storage)
-      @uri = storage.uri
+      @storage = storage
       @username = storage.username
       @password = storage.password
       @group = storage.group
@@ -48,12 +48,10 @@ module Storages::Peripherals::StorageInteraction::Nextcloud
                    .basic_auth(@username, @password)
                    .with(headers: { "OCS-APIRequest" => "true" })
                    .post(
-                     Util.join_uri_path(
-                       @uri,
-                       "ocs/v1.php/cloud/users",
-                       CGI.escapeURIComponent(user),
-                       "groups"
-                     ),
+                     RequestUrlBuilder.build(@storage,
+                                             "ocs/v1.php/cloud/users",
+                                             CGI.escapeURIComponent(user),
+                                             "groups"),
                      form: { "groupid" => CGI.escapeURIComponent(group) }
                    )
 

@@ -29,7 +29,7 @@
 #++
 #
 module Storages::Admin::Forms
-  class OAuthClientFormComponent < ApplicationComponent
+  class OAuthClientFormComponent < ApplicationComponent # rubocop:disable OpenProject/AddPreviewForViewComponent
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
 
@@ -64,8 +64,8 @@ module Storages::Admin::Forms
     end
 
     def nextcloud_integration_link(target: "_blank")
-      href = Storages::Peripherals::StorageInteraction::Nextcloud::Util
-               .join_uri_path(storage.host, "settings/admin/openproject")
+      href = Storages::Peripherals::StorageInteraction::RequestUrlBuilder
+               .build(storage, "settings/admin/openproject")
       render(Primer::Beta::Link.new(href:, target:)) { I18n.t("storages.instructions.nextcloud.integration") }
     end
 
