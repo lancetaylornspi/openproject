@@ -30,17 +30,16 @@ require "support/components/common/modal"
 require "support/components/autocompleter/ng_select_autocomplete_helpers"
 
 module Components
-  module WorkPackages
+  module Sharing
     class ShareModal < Components::Common::Modal
       include Components::Autocompleter::NgSelectAutocompleteHelpers
 
-      attr_reader :work_package, :title
+      attr_reader :entity, :title
 
-      def initialize(work_package)
+      def initialize(_entity)
         super()
 
-        @work_package = work_package
-        @title = I18n.t("js.work_packages.sharing.title")
+        raise "Implement me and set @entity and @title"
       end
 
       def expect_open
@@ -298,9 +297,10 @@ module Components
                 expect(page).to have_button(role_name),
                                 "Expected share with #{user.name.inspect} to have button #{role_name}."
               end
+
               unless editable
-                expect(page).not_to have_button,
-                                    "Expected share with #{user.name.inspect} not to be editable (expected no buttons)."
+                expect(page).to have_button(role_name, disabled: true),
+                                "Expected share with #{user.name.inspect} not to be editable (expected disabled button)."
               end
             end
           end
@@ -323,8 +323,7 @@ module Components
 
       def expect_no_invite_option
         within_modal do
-          expect(page)
-            .to have_text(I18n.t("sharing.denied", entities: WorkPackage.model_name.human(count: 2)))
+          expect(page).to have_no_css('[data-test-selector="op-share-dialog-invite-autocomplete"]')
         end
       end
 

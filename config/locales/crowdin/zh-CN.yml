@@ -399,7 +399,7 @@ zh-CN:
       notice_reset_token: "生成了一个新的%{type} 令牌。您的访问令牌是:"
       token_value_warning: "注意: 这将是您唯一机会看到这个令牌, 请务必立即复制它。"
       no_results_title_text: 目前没有可用的访问令牌。
-      notice_api_token_revoked: "The API token has been deleted. To create a new token please use the button in the API section."
+      notice_api_token_revoked: "API 令牌已被删除。要创建新令牌，请使用 API 部分中的链接。"
       notice_rss_token_revoked: "RSS 令牌已被删除。要创建新令牌，请使用 RSS 部分中的链接。"
       notice_ical_token_revoked: '项目“%{project_name}”的日历“%{calendar_name}”的 iCalendar 令牌“%{token_name}”已被撤销。 此令牌的 iCalendar URL 现在无效。'
   news:
@@ -1129,6 +1129,8 @@ zh-CN:
         other: "通知"
       placeholder_user: "占位符用户"
       project: "项目"
+      project_query:
+        other: "项目列表"
       query: "自定义查询"
       role:
         other: "角色"
@@ -2002,6 +2004,7 @@ zh-CN:
   label_invite_user: "邀请用户"
   label_share: "共享"
   label_share_project_list: "共享项目列表"
+  label_share_work_package: "共享工作包"
   label_show_hide: "显示/隐藏"
   label_show_hide_n_items: "显示/隐藏 %{count} 项目"
   label_show_all_registered_users: "显示所有注册用户"
@@ -3398,7 +3401,12 @@ zh-CN:
       additional_privileges_group: "可能有额外的权限(作为组成员)"
       additional_privileges_project_or_group: "可能有额外的权限(作为项目成员或组成员)"
     project_queries:
+      publishing_denied: "您没有公开项目列表的权限。"
       access_warning: "用户只能看到他们有权访问的项目。共享项目列表不会影响单个项目的权限。"
+      user_details:
+        owner: "列表所有者"
+        can_view_because_public: "已经可以查看，因为列表与所有人共享"
+        can_manage_public_lists: "可根据全局权限进行编辑"
       public_flag:
         label: "通过 %{instance_name}与大家分享"
         caption: "每个人都可以查看此项目列表。有全局编辑权限的人可以修改它。"
@@ -3414,6 +3422,8 @@ zh-CN:
         view_description: "可以查看此项目列表。"
         edit: "编辑"
         edit_description: "可以查看、共享和编辑此项目列表。"
+      upsale:
+        message: "与单个用户共享项目列表是一项企业附加功能。"
   working_days:
     info: >
       在安排工作包时，未选择的日期将被跳过（且不计入天数）。可以在工作包级别覆盖这些选项。
