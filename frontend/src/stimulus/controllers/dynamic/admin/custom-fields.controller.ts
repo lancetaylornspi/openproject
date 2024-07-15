@@ -237,49 +237,22 @@ export default class CustomFieldsController extends Controller {
   }
 
   private toggleFormat(format:string) {
-    this.setActive(
-      this.allowNonOpenVersionsTargets,
-      format === 'version',
-    );
-    this.setActive(
-      this.defaultBoolTargets,
-      format === 'bool',
-    );
-    this.setActive(
-      this.defaultLongTextTargets,
-      format === 'text',
-    );
-    this.setActive(
-      this.defaultTextTargets,
-      !['bool', 'text'].includes(format),
-    );
-    this.setActive(
-      this.defaultValueTargets,
-      !['list', 'date', 'user', 'version'].includes(format),
-    );
-    this.setActive(
-      this.lengthTargets,
-      !['list', 'bool', 'date', 'user', 'version', 'link'].includes(format),
-    );
-    this.setActive(
-      this.multiSelectTargets,
-      ['list', 'user', 'version'].includes(format),
-    );
-    this.setActive(
-      this.possibleValuesTargets,
-      format === 'list',
-    );
-    this.setActive(
-      this.regexpTargets,
-      !['list', 'bool', 'date', 'user', 'version'].includes(format),
-    );
-    this.setActive(
-      this.searchableTargets,
-      !['bool', 'date', 'float', 'int', 'user', 'version'].includes(format),
-    );
-    this.setActive(
-      this.textOrientationTargets,
-      format === 'text',
-    );
+    const targets = {
+      allowNonOpenVersionsTargets: format === 'version',
+      defaultBoolTargets: format === 'bool',
+      defaultLongTextTargets: format === 'text',
+      defaultTextTargets: !['bool', 'text'].includes(format),
+      defaultValueTargets: !['list', 'date', 'user', 'version'].includes(format),
+      lengthTargets: !['list', 'bool', 'date', 'user', 'version', 'link'].includes(format),
+      multiSelectTargets: ['list', 'user', 'version'].includes(format),
+      possibleValuesTargets: format === 'list',
+      regexpTargets: !['list', 'bool', 'date', 'user', 'version'].includes(format),
+      searchableTargets: !['bool', 'date', 'float', 'int', 'user', 'version'].includes(format),
+      textOrientationTargets: format === 'text',
+    };
+
+    Object.entries(targets).forEach(([target, condition]) => {
+      this.setActive(this<HTMLElement>[target], condition);
+    });
   }
 }
